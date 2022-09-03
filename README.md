@@ -101,6 +101,21 @@ Note: I was able to activate the environment from command prompt terminal only
     }
 }
 '''
-        
+
+9. Created predict method to consume the value from html form and then to make inference out of it. 
+
+# Deploy the app to HEROKU cloud platform
+
+1. Proc file to be created. Contains the commands to be executed as soon as the app gets started
+
+2. Commands are based out of Green unicorn (Python http server for WSGI app enables concurrency)
+
+3. Below are commands in proc file
+
+    web: gunicorn app:app       ==> gunicorn takes care of concurrency when multiple requests hits the app; app specifies app.py and second instance of app indicates the app object created out of Flask within app.py
+
+    
+
+
 
 
