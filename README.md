@@ -61,8 +61,46 @@ Note: I was able to activate the environment from command prompt terminal only
         
         git add requirements.txt        ==> This will move the file to stagged changes
 
+        git add .                       ==> To add all the files
+        
         git status                      ==> To check the state of each file in local repo
 
+        git commit -m "Initial commit: Includes requirement.txt & readme file"
+
+        git push origin main
+
+6. Create app.py file with Flask to create micro web-service - To expose the model as an API
+    
+    * Points to remember:
+    
+        * render template destination files (Ex: home.html) to reside in templates folder
+        * Standard scaler to be applied prior to inferencing
+        * Make sure to reshare the raw data (from (13,1) to (1,13))
+        * Jsonify the output and return the value to the client
+
+7. Run the app.py from the terminal - Model will be exposed as an API in local client
+   http://127.0.0.1:5000/predict_api
+
+8. Prepare a test data in Json format and test the same via Postman in POST method
+'''
+{
+    "data" : {
+        "CRIM":0.00632,
+        "ZN":18.0,
+        "INDUS":2.31,
+        "CHAS":0.0,
+        "NOX":0.538,
+        "RM":6.575,
+        "AGE":65.2,
+        "DIS":4.0900,
+        "RAD":1.0,
+        "TAX":296.0,
+        "PTRATIO":15.3,
+        "B":396.90,
+        "LSTAT":4.98
+    }
+}
+'''
         
 
 
