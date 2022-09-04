@@ -158,7 +158,7 @@ Below steps to be followed to dockerize the application,
         * HEROKU_API_KEY : To identify the heroku account to  be connected from Github
           HEORKU_API_KEY will be available in user settings in Heroku platform. Copy the key and add the new repo secret in Gihub(settings) and paste the same
         * HEROKU_EMAIL: Email ID used in heorku login
-        * HEROKU_APP_NAM: App name in Heroku to where the deployment has to be pushed
+        * HEROKU_APP_NAME: App name in Heroku to where the deployment has to be pushed
 
 
 
