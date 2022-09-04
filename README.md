@@ -114,7 +114,52 @@ Note: I was able to activate the environment from command prompt terminal only
 
     web: gunicorn app:app       ==> gunicorn takes care of concurrency when multiple requests hits the app; app specifies app.py and second instance of app indicates the app object created out of Flask within app.py
 
-    
+4. Follow below steps in heorku platform
+    * Login into heroku website
+    * create new app - Give app name(boston-house-price-predapp) & create app
+    * Deployment method - Choose Github
+    * Authorize the github connection from Heroku & search/pick the target repository from github
+    * Hit on Connect adjacent the repository listed in heroku platform
+    * Enable autodeployment option will enable to auto deploy whenever there is new commit in Git repo (Not chosen now)
+    * Hit on Deploy Branch - Based on Proc file & requirements.txt, environment will be setup within Heroku platform
+    * Wait until you see the success message 'Your app was successfully deployed.'
+    * Test the app by clicking VIEW - Home page will be displayed with form - fill the values & predict
+    * URL: https://boston-house-price-predapp.herokuapp.com/predict 
+    * Test the predict_api method from postman using the below url
+        https://boston-house-price-predapp.herokuapp.com/predict_api 
+
+# Dockerize & enable CI/CD pipeline
+    * CI/CD: Once the code is committed, automatic deployement has to be done to server
+    * Idea: To dockerize the application and run as dockerized container in cloud platform
+    * Docker image - Captures the envionrment requirements, stpes of execution etc - It is 
+                     like blue print of a house (class)
+    * Docker Container - Actual build of a house (object) - Instance of an image - 
+                         There can be many containers for an image.Runnable instance of an image.
+
+
+Below steps to be followed to dockerize the application,
+    * Create Dockerfile in the working directory
+    * Dockerfile helps to create Docker image & this image can be taken and run within a container
+    * Below are important docker commands
+        * FROM python:3.7   ==> From docker hub, it takes linux base image with py3.7
+        * COPY . /app       ==> Copy the current folder to app folder in docker container
+        * WORKDIR /app      ==> Set the app folder as working directory in container
+        * RUN pip install -r requirements.txt  ==> To install the packages within container
+        * EXPOSE $PORT      ==> Placeholder for the port number to be assigned - With this port of    conatainer, we would be able to access the url 
+        * CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+          We run the application with gunicorn. 4 workers assigned to manage concurrency. Local heroku url is binded to the port. Actual py file to run is app and then the object of Flask is app
+
+# Github actions
+    * Create two folders in working directory. Github checks for these folders whenever we push the code into the repo
+        * .github
+        * workflows. Here create main.yaml file      
+    * main.yaml - configuration file denotes the steps to be taken cae once the code gets committed
+    * main.yaml needs three important details
+        * HEROKU_API_KEY : To identify the heroku account to  be connected from Github
+          HEORKU_API_KEY will be available in user settings in Heroku platform. Copy the key and add the new repo secret in Gihub(settings) and paste the same
+        * HEROKU_EMAIL: Email ID used in heorku login
+        * HEROKU_APP_NAM: App name in Heroku to where the deployment has to be pushed
+
 
 
 
