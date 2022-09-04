@@ -160,6 +160,10 @@ Below steps to be followed to dockerize the application,
         * HEROKU_EMAIL: Email ID used in heorku login
         * HEROKU_APP_NAME: App name in Heroku to where the deployment has to be pushed
 
+    *main.yaml takes care of build the image, create container and deploys the container into heroku platform.
+
+Reference: OneNeuron.ai
+
 
 
 
